@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.android.compileSdk
+    buildToolsVersion versions.android.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.android.minSdk
+        targetSdkVersion versions.android.targetSdk
+        versionCode 1
+        versionName "1.0"
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':core')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation deps.android.corektx
+    implementation deps.android.appcompat
+
+    // Retrofit
+    implementation deps.square.gsonConverter
+    implementation deps.square.retrofit2
+    implementation deps.square.rxConverter
+    implementation deps.square.okHttp
+    implementation deps.square.okHttpLogging
+
+    // Basic testing tools
+    testImplementation deps.testing.junit
+    testImplementation deps.testing.mockito
+    testImplementation deps.testing.mockitoKotlin
+    testImplementation deps.testing.mockitoInline
+
+    // Koin
+    implementation deps.koin.android
+    implementation deps.koin.core
+    testImplementation deps.koin.test
+
+}

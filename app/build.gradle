@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.android.compileSdk
+    buildToolsVersion versions.android.buildTools
+
+    defaultConfig {
+        applicationId "com.hamed.articlesviewer"
+        minSdkVersion versions.android.minSdk
+        targetSdkVersion versions.android.targetSdk
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation project(path: ':repository')
+    implementation project(path: ':core')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation deps.android.corektx
+    implementation deps.android.appcompat
+    implementation deps.android.design
+    implementation deps.android.cardView
+    implementation deps.android.constraintLayout
+    implementation deps.android.mediaRouter
+    implementation deps.android.multidex
+
+    // Basic testing tools
+    testImplementation deps.testing.junit
+    testImplementation deps.testing.mockito
+    testImplementation deps.testing.mockitoKotlin
+    testImplementation deps.testing.mockitoInline
+
+    // Koin
+    implementation deps.koin.android
+    implementation deps.koin.core
+    testImplementation deps.koin.test
+}
