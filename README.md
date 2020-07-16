@@ -37,6 +37,6 @@ Dependency Injection is used when it was required
 
 # Challenges
 > The json file returned had nulls in some parameters which was causing the app to crash. solution: The ApiModels accepts null value and the mapper on app side handles it
-The retrofit was not working properly. Solution: the wrong API model was used and replaced with right one
+The retrofit was not working properly. Solution: the wrong API model was used and replaced with right one. Today the API stoped sending data which was because of the date mentioned (for free license it show the history up to 1 or 2 weeks), so I had to cread a LocalDateTime to pass in query.
 
 
