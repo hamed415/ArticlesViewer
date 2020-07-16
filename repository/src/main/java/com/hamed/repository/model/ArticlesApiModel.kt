@@ -1,7 +1,12 @@
 package com.hamed.repository.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
+@Parcelize
 data class ArticlesApiModel(
     @SerializedName("source")
     var source: SourceApiModel = SourceApiModel(),
@@ -19,4 +24,4 @@ data class ArticlesApiModel(
     var publishedAt: String = "",
     @SerializedName("content")
     var content: String = ""
-)
+) :  Parcelable

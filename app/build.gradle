@@ -40,6 +40,12 @@ dependencies {
     implementation deps.android.mediaRouter
     implementation deps.android.multidex
 
+    // Rx
+    implementation deps.rx.rxandroid
+    implementation deps.rx.rxjava2
+    implementation deps.rx.rxjava2lint
+    implementation deps.rx.rxkotlin2
+
     // Basic testing tools
     testImplementation deps.testing.junit
     testImplementation deps.testing.mockito
