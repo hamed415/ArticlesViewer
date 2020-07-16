@@ -29,6 +29,8 @@ class ArticlesMapperTest {
 
         ).toArticles()
 
+        assertEquals(apiModelList.size, 2)
+
         // null test
         assertEquals(apiModelList[0].author, "Empty author")
         assertEquals(apiModelList[0].description, "Empty description")
