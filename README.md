@@ -32,6 +32,9 @@ repository module:
 >This module uses retrofit and API models (in model package) to call and return json response from http://newsapi.org/ site.
 Dependency Injection is used when it was required
 
+# Improvements to be done
+> We should manage the text on title and description to remove html or special charactes. Those texts should also be managed so it is not chopped at the end of the line. I see that the first image does not load as it should.
+
 # Challenges
 > The json file returned had nulls in some parameters which was causing the app to crash. solution: The ApiModels accepts null value and the mapper on app side handles it
 The retrofit was not working properly. Solution: the wrong API model was used and replaced with right one
