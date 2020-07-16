@@ -1,6 +1,6 @@
 package com.hamed.core.model
 
-data class Articles (
+data class Article (
     var source: String,
     var author: String = "",
     var title: String = "",

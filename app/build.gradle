@@ -40,6 +40,8 @@ dependencies {
     implementation deps.android.constraintLayout
     implementation deps.android.mediaRouter
     implementation deps.android.multidex
+    implementation deps.android.recyclerView
+    implementation deps.square.picasso
 
     // Rx
     implementation deps.rx.rxandroid
