@@ -1,18 +1,14 @@
 package com.hamed.articlesviewer.screens.home.interactor
 
+import com.hamed.articlesviewer.usecase.GetArticlesUsecase
 import com.hamed.core.model.Articles
-import com.hamed.repository.mapper.toArticles
-import com.hamed.repository.repository.NewsRepository
 import io.reactivex.Single
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 
 class HomeInteractor : KoinComponent {
-    private val repository: NewsRepository by inject()
+    private var getArticlesUsecase: GetArticlesUsecase = GetArticlesUsecase()
 
-    fun getArticles(): Single<List<Articles>> {
-        return repository.getArticles()
-            .flatMap { Single.just(it.toArticles()) }
+    fun getArticles(params: GetArticlesUsecase.params): Single<List<Articles>> {
+        return getArticlesUsecase.getSingle(params)
     }
-
 }

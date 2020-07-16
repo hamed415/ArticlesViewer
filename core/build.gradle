@@ -37,6 +37,12 @@ dependencies {
     testImplementation deps.testing.mockitoKotlin
     testImplementation deps.testing.mockitoInline
 
+    // Rx
+    implementation deps.rx.rxandroid
+    implementation deps.rx.rxjava2
+    implementation deps.rx.rxjava2lint
+    implementation deps.rx.rxkotlin2
+
     // Koin
     implementation deps.koin.android
     implementation deps.koin.core
