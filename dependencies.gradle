@@ -17,7 +17,7 @@ ext {
                     firebaseAnalytics    : '17.2.1',
                     firebasePerformance  : '19.0.2'
             ],
-            facebook              : [
+            facebook     : [
                     stetho: '1.5.0',
             ],
             square       : [
@@ -55,7 +55,8 @@ ext {
             rxPermissions: '0.7.0',
             timber       : '4.7.1',
             tikxml       : '0.8.13',
-            koin         : '2.0.1'
+            koin         : '2.0.1',
+            calligraphy  : '2.3.0',
     ]
     deps = [
             testing      : [
@@ -117,7 +118,7 @@ ext {
                     rxkotlin2  : "io.reactivex.rxjava2:rxkotlin:$versions.rx.rxkotlin2",
                     rxjava2lint: "com.vanniktech:lint-rules-rxjava2:$versions.rx.rxjava2lint"
             ],
-            facebook              : [
+            facebook     : [
                     stetho       : "com.facebook.stetho:stetho:$versions.facebook.stetho",
                     stetho_okhttp: "com.facebook.stetho:stetho-okhttp3:$versions.facebook.stetho",
             ],
@@ -128,6 +129,7 @@ ext {
             rxKotlin     : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
             rxPermissions: "com.vanniktech:rxpermission:$versions.rxPermissions",
             timber       : "com.jakewharton.timber:timber:$versions.timber",
+            calligraphy           : "uk.co.chrisjenx:calligraphy:$versions.calligraphy",
             tikxml       : [
                     annotation: "com.tickaroo.tikxml:annotation:$versions.tikxml",
                     core      : "com.tickaroo.tikxml:core:$versions.tikxml",

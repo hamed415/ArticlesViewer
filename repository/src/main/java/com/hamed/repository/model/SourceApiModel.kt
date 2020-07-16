@@ -9,5 +9,5 @@ data class SourceApiModel(
     @SerializedName("id")
     var id: String? = null,
     @SerializedName("name")
-    var name: String = ""
+    var name: String? = null
 ) : Parcelable

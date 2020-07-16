@@ -11,17 +11,17 @@ data class ArticlesApiModel(
     @SerializedName("source")
     var source: SourceApiModel = SourceApiModel(),
     @SerializedName("author")
-    var author: String = "",
+    var author: String? = null,
     @SerializedName("title")
-    var title: String = "",
+    var title: String? = null,
     @SerializedName("description")
-    var description: String = "",
+    var description: String? = null,
     @SerializedName("url")
-    var url: String = "",
+    var url: String? = null,
     @SerializedName("urlToImage")
-    var urlToImage: String = "",
+    var urlToImage: String? = null,
     @SerializedName("publishedAt")
-    var publishedAt: String = "",
+    var publishedAt: String? = null,
     @SerializedName("content")
-    var content: String = ""
+    var content: String? = null
 ) :  Parcelable
