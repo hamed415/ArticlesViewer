@@ -1,8 +1,6 @@
-package com.hamed.repository.news
+package com.hamed.repository.api
 
 import com.hamed.repository.model.NewsApiModel
-import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

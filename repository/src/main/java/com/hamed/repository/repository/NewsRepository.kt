@@ -1,8 +1,7 @@
 package com.hamed.repository.repository
 
-import com.hamed.repository.BuildConfig
 import com.hamed.repository.factory.NewsFactory
-import com.hamed.repository.news.NewsApi
+import com.hamed.repository.api.NewsApi
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
