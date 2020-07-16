@@ -57,6 +57,7 @@ ext {
             tikxml       : '0.8.13',
             koin         : '2.0.1',
             calligraphy  : '2.3.0',
+            roundImage   : "2.2.1"
     ]
     deps = [
             testing      : [
@@ -129,7 +130,7 @@ ext {
             rxKotlin     : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
             rxPermissions: "com.vanniktech:rxpermission:$versions.rxPermissions",
             timber       : "com.jakewharton.timber:timber:$versions.timber",
-            calligraphy           : "uk.co.chrisjenx:calligraphy:$versions.calligraphy",
+            calligraphy  : "uk.co.chrisjenx:calligraphy:$versions.calligraphy",
             tikxml       : [
                     annotation: "com.tickaroo.tikxml:annotation:$versions.tikxml",
                     core      : "com.tickaroo.tikxml:core:$versions.tikxml",
@@ -140,6 +141,7 @@ ext {
                     android: "org.koin:koin-android:$versions.koin",
                     java   : "org.koin:koin-java:$versions.koin",
                     test   : "org.koin:koin-test:$versions.koin"
-            ]
+            ],
+            roundImage   : "jp.wasabeef:picasso-transformations:$versions.roundImage"
     ]
 }

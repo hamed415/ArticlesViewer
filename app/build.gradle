@@ -42,6 +42,7 @@ dependencies {
     implementation deps.android.multidex
     implementation deps.android.recyclerView
     implementation deps.square.picasso
+    implementation deps.roundImage
 
     // Rx
     implementation deps.rx.rxandroid

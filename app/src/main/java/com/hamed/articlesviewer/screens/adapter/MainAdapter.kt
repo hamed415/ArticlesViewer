@@ -1,5 +1,6 @@
 package com.hamed.articlesviewer.screens.adapter
 
+import android.R.attr.radius
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -11,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.hamed.articlesviewer.R
 import com.hamed.core.model.Article
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Transformation
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.article_item.view.*
+
 
 class MainAdapter(val context: Context, val news: List<Article>) :
     Adapter<MainAdapter.ViewHolder>() {
@@ -43,7 +47,15 @@ class MainAdapter(val context: Context, val news: List<Article>) :
             itemView.description.text = article.description
             itemView.url.text = article.url
             if (article.urlToImage.trim().isNotEmpty()) {
-                Picasso.with(context).load(article.urlToImage).into(itemView.image)
+                val transformation: Transformation =
+                    RoundedCornersTransformation(10, 0)
+
+                Picasso.with(context)
+                    .load(article.urlToImage)
+                    .resize(150,150)
+                    .transform(transformation)
+                    .error(R.drawable.error)
+                    .into(itemView.image)
             }
         }
 
