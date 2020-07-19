@@ -33,7 +33,9 @@ repository module:
 Dependency Injection is used when it was required
 
 # Unit Tests
-> There are only 2 unit tests. One at core to test the valifity of date format. I just did this in case the server requires specific date format then the API calls do not break. The second unit test is at app level for the mapper to check is the ModelAPi is mapped correctly to the core models.
+> There are two unit tests in the project. 
+1- One unit test is at core module to test the valifity of date format in TimeUtil. I just did this in case the server requires specific date format then the API calls do not break. 
+2- The second unit test is at app module for the mapper to check the validity core models when created from ModelAPi.
 
 # Improvements to be done
 > We should manage the text on title and description to remove html or special charactes. Those texts should also be managed so it is not chopped at the end of the line. I see that the first image does not load as it should.
