@@ -32,6 +32,11 @@ repository module:
 >This module uses retrofit and API models (in model package) to call and return json response from http://newsapi.org/ site.
 Dependency Injection is used when it was required
 
+# Memory Management
+> I have managed the momory at 2 places
+1- Using Recycler view at app level 
+2- Using CompositeDisposable to Dipose the RxKotin calls
+
 # Unit Tests
 > There are two unit tests in the project. 
 1- One unit test is at core module to test the valifity of date format in TimeUtil. I just did this in case the server requires specific date format then the API calls do not break. 
