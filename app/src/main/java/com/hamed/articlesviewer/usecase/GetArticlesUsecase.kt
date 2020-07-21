@@ -12,12 +12,12 @@ class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.p
     KoinComponent {
     private val repository: NewsRepository by inject()
 
-    override fun getSingle(params: params?): Single<List<Article>> {
+    override fun getSingle(params: params): Single<List<Article>> {
         return repository.getArticles(
-            params?.q ?: "",
-            params?.from ?: "",
-            params?.sortBy ?: "",
-            params?.apiKey ?: ""
+            params.q ?: "",
+            params.from ?: "",
+            params.sortBy ?: "",
+            params.apiKey ?: ""
         )
             .flatMap { Single.just(it.toArticles()) }
     }

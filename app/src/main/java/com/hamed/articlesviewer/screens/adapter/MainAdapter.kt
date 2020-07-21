@@ -1,6 +1,5 @@
 package com.hamed.articlesviewer.screens.adapter
 
-import android.R.attr.radius
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -52,7 +51,7 @@ class MainAdapter(val context: Context, val news: List<Article>) :
 
                 Picasso.with(context)
                     .load(article.urlToImage)
-                    .resize(150,150)
+                    .resize(150, 150)
                     .transform(transformation)
                     .error(R.drawable.error)
                     .into(itemView.image)

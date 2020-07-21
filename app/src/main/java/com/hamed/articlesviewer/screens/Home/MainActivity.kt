@@ -16,6 +16,19 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initiateRecyclerView()
+    }
+
+
+    override fun getLayoutResource(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun createPresenter(): Main.MainPresenter {
+        return MainPresenter()
+    }
+
+    override fun onResume() {
+        super.onResume()
         presenter?.getArticlesList()
     }
 
@@ -27,15 +40,5 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
 
     override fun updateList(articles: List<Article>) {
         mainRecyclerView.adapter = MainAdapter(this, articles)
-//        if(articles.size > 0)
-//        myText.text = articles[0].author
-    }
-
-    override fun getLayoutResource(): Int {
-        return R.layout.activity_main
-    }
-
-    override fun createPresenter(): Main.MainPresenter {
-        return MainPresenter()
     }
 }
