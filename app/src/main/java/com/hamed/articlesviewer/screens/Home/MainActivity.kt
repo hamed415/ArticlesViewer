@@ -12,9 +12,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity<Main.MainPresenter>(),
     Main.MainView {
 
-
-// branch3
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initiateRecyclerView()
@@ -29,18 +26,23 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
         return MainPresenter()
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter?.getArticlesList()
-    }
-
-    fun initiateRecyclerView(){
+    fun initiateRecyclerView() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        mainRecyclerView.layoutManager =layoutManager
+        mainRecyclerView.layoutManager = layoutManager
         mainRecyclerView.itemAnimator = DefaultItemAnimator()
     }
 
     override fun updateList(articles: List<Article>) {
         mainRecyclerView.adapter = MainAdapter(this, articles)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.let {
+            it?.getArticlesList()
+        } ?: run {
+            createPresenter()
+            presenter?.getArticlesList()
+        }
     }
 }
