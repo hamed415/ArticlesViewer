@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity<Main.MainPresenter>(),
     Main.MainView {
 
-
+// branch1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initiateRecyclerView()
