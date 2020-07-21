@@ -26,7 +26,7 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
 
     override fun createPresenter(): Main.MainPresenter {
         return MainPresenter()
-    }
+    }q
 
     override fun onResume() {
         super.onResume()
