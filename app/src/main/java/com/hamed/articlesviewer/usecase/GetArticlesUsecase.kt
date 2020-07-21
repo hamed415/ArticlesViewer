@@ -1,5 +1,6 @@
 package com.hamed.articlesviewer.usecase
 
+import com.hamed.articlesviewer.BuildConfig
 import com.hamed.articlesviewer.mapper.toArticles
 import com.hamed.core.model.Article
 import com.hamed.core.usecase.SingleUseCaseImpl
@@ -17,7 +18,7 @@ class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.p
             params.q ?: "",
             params.from ?: "",
             params.sortBy ?: "",
-            params.apiKey ?: ""
+            BuildConfig.API_NEWS_KEY
         )
             .flatMap { Single.just(it.toArticles()) }
     }
@@ -25,8 +26,7 @@ class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.p
     data class params(
         val q: String = "",
         val from: String = "",
-        val sortBy: String = "",
-        val apiKey: String = "6cfe588c32024488a4bf8fed85cde603"
+        val sortBy: String = ""
     )
 
 }

@@ -26,7 +26,7 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
         return MainPresenter()
     }
 
-    fun initiateRecyclerView() {
+    private fun initiateRecyclerView() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         mainRecyclerView.layoutManager = layoutManager
         mainRecyclerView.itemAnimator = DefaultItemAnimator()

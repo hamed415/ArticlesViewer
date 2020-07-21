@@ -14,8 +14,10 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "API_NEWS_KEY", API_NEWS_KEY
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
