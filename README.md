@@ -32,6 +32,16 @@ repository module:
 >This module uses retrofit and API models (in model package) to call and return json response from http://newsapi.org/ site.
 Dependency Injection is used when it was required
 
+# Memory Management
+> I have managed the momory at 2 places
+1- Using Recycler view at app level 
+2- Using CompositeDisposable to Dipose the RxKotin calls
+
+# Unit Tests
+> There are two unit tests in the project. 
+1- One unit test is at core module to test the valifity of date format in TimeUtil. I just did this in case the server requires specific date format then the API calls do not break. 
+2- The second unit test is at app module for the mapper to check the validity of core models when created from ModelAPi.
+
 # Improvements to be done
 > We should manage the text on title and description to remove html or special charactes. Those texts should also be managed so it is not chopped at the end of the line. I see that the first image does not load as it should.
 
