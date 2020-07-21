@@ -19,6 +19,7 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
     }
 
 
+    // testing in branch 2
     override fun getLayoutResource(): Int {
         return R.layout.activity_main
     }
