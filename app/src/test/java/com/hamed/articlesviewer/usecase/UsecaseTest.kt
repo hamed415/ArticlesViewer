@@ -11,12 +11,11 @@ import com.hamed.repository.repository.NewsRepository
 import com.nhaarman.mockitokotlin2.given
 import io.reactivex.Single
 import org.junit.Test
-import org.koin.test.KoinTest
 import org.koin.test.mock.declareMock
 
 class UsecaseTest: BaseKoinTest() {
 
-    private val artices = listOf(
+    private val articles = listOf(
         Article(
             source = "Cointelegraph",
             author = "Cointelegraph By Guest Authors",
@@ -72,7 +71,7 @@ class UsecaseTest: BaseKoinTest() {
             .test()
             .assertComplete()
             .assertResult(
-                artices
+                articles
             )
 
     }
