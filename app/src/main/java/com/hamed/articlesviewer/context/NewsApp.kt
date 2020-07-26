@@ -1,6 +1,7 @@
 package com.hamed.articlesviewer.context
 
 import androidx.multidex.MultiDexApplication
+import com.hamed.articlesviewer.dependencyinjection.appModule
 import com.hamed.repository.dependencyinjection.repoModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinComponent
@@ -15,7 +16,7 @@ class NewsApp : MultiDexApplication(), KoinComponent {
             androidContext(this@NewsApp)
             // use modules
             modules(
-                listOf(repoModule)
+                listOf(repoModule, appModule)
             )
         }
     }

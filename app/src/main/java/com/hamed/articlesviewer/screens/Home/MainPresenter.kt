@@ -7,14 +7,12 @@ import com.hamed.navigation.base.BasePresenterImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent
+import org.koin.core.inject
 import java.time.LocalDateTime
 
 class MainPresenter : BasePresenterImpl<Main.MainView>(),
     Main.MainPresenter, KoinComponent {
-    private val interactor by lazy {
-        MainInteractor()
-    }
-
+     private val interactor:MainInteractor by inject()
 
     override fun getArticlesList() {
         composite.add(interactor.getArticles(
@@ -36,5 +34,4 @@ class MainPresenter : BasePresenterImpl<Main.MainView>(),
             )
         )
     }
-
 }

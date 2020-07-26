@@ -57,9 +57,18 @@ dependencies {
     testImplementation deps.testing.mockito
     testImplementation deps.testing.mockitoKotlin
     testImplementation deps.testing.mockitoInline
+    testImplementation deps.testing.rxtest
+    //necessary to mock Realm...
+    testImplementation deps.rx.rxjava2
+
+    //robolectric
+    testImplementation deps.testing.robolectric
 
     // Koin
     implementation deps.koin.android
     implementation deps.koin.core
     testImplementation deps.koin.test
+
+    // retrofit
+    implementation deps.square.retrofit2
 }

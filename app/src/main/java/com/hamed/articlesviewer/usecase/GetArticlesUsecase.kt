@@ -20,7 +20,9 @@ class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.p
             params.sortBy ?: "",
             BuildConfig.API_NEWS_KEY
         )
-            .flatMap { Single.just(it.toArticles()) }
+            .flatMap {
+                Single.just(it.toArticles())
+            }
     }
 
     data class params(

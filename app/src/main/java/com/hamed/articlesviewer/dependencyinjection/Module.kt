@@ -1,8 +1,11 @@
 package com.hamed.articlesviewer.dependencyinjection
 
+import com.hamed.articlesviewer.screens.home.MainInteractor
+import com.hamed.articlesviewer.usecase.GetArticlesUsecase
 import com.hamed.repository.repository.NewsRepository
 import org.koin.dsl.module
 
 val appModule = module {
-    single { NewsRepository() }
+    single { MainInteractor() }
+    single { GetArticlesUsecase() }
 }
