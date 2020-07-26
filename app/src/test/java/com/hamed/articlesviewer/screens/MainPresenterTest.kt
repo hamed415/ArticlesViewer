@@ -1,19 +1,13 @@
 package com.hamed.articlesviewer.screens
 
 import com.hamed.articlesviewer.BaseKoinTest
-import com.hamed.articlesviewer.BuildConfig
 import com.hamed.articlesviewer.screens.home.Main
 import com.hamed.articlesviewer.usecase.GetArticlesUsecase
-import com.hamed.articlesviewer.util.http404Exception
 import com.hamed.core.model.Article
 import com.hamed.repository.model.ArticlesApiModel
 import com.hamed.repository.model.NewsApiModel
 import com.hamed.repository.model.SourceApiModel
-import com.hamed.repository.repository.NewsRepository
-import com.nhaarman.mockitokotlin2.given
-import io.reactivex.Single
 import org.junit.Test
-import org.koin.test.mock.declareMock
 import org.mockito.Mock
 
 
@@ -55,62 +49,6 @@ class MainPresenterTest : BaseKoinTest() {
             publishedAt = null
             content = null
         })
-    }
-
-    @Test
-    fun getArticlesUsecaseSuccessTest() {
-        declareMock<NewsRepository> {
-            given(
-                this.getArticles(
-                    q = "bitcoin",
-                    from = "2020-07-25",
-                    sortBy = "publishedAt",
-                    apiKey = BuildConfig.API_NEWS_KEY
-                )
-            ).willReturn(Single.just(newsApiModel))
-        }
-
-        GetArticlesUsecase()
-            .getSingle(
-                GetArticlesUsecase.params(
-                    q = "bitcoin",
-                    from = "2020-07-25",
-                    sortBy = "publishedAt"
-                )
-            )
-            .test()
-            .assertComplete()
-            .assertResult(
-                artices
-            )
-
-    }
-
-    @Test
-    fun getArticlesUsecaseFailTest() {
-        declareMock<NewsRepository> {
-            given(
-                this.getArticles(
-                    q = "bitcoin",
-                    from = "2020-07-25",
-                    sortBy = "publishedAt",
-                    apiKey = BuildConfig.API_NEWS_KEY
-                )
-            ).willReturn(Single.error(http404Exception))
-        }
-
-        GetArticlesUsecase()
-            .getSingle(
-                GetArticlesUsecase.params(
-                    q = "bitcoin",
-                    from = "2020-07-25",
-                    sortBy = "publishedAt"
-                )
-            )
-            .test()
-            .assertNotComplete()
-            .assertError(http404Exception)
-
     }
 
     @Test
