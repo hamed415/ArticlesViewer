@@ -16,9 +16,9 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.article_item.view.*
 
 
-class MainAdapter(val context: Context, val news: List<Article>) :
+class MainAdapter(val context: Context) :
     Adapter<MainAdapter.ViewHolder>() {
-
+    var news = listOf<Article>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.article_item, parent, false)
@@ -31,6 +31,10 @@ class MainAdapter(val context: Context, val news: List<Article>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(news[position])
+    }
+
+    fun setArticles(articles: List<Article>) {
+        news = articles
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),

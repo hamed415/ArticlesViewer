@@ -24,6 +24,9 @@ abstract class BaseActivity<P : BasePresenter<*>> : BaseCalligraphyActivity(), B
         }
         presenter?.onAttach(this)
         setContentView(getLayoutResource())
+
+        if (supportActionBar != null)
+            supportActionBar?.hide()
     }
 
     public override fun onResume() {
