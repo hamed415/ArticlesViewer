@@ -2,6 +2,7 @@ package com.hamed.repository.repository
 
 import com.hamed.repository.api.NewsApi
 import com.hamed.repository.factory.NewsFactory
+import io.reactivex.annotations.CheckReturnValue
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -12,6 +13,7 @@ open class NewsRepository : KoinComponent {
         newsFactory.getNews<NewsApi>()
     }
 
+    @CheckReturnValue
     fun getArticles(
         q: String,
         from: String,

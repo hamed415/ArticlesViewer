@@ -15,9 +15,9 @@ class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.p
 
     override fun getSingle(params: params): Single<List<Article>> {
         return repository.getArticles(
-            params.q ?: "",
-            params.from ?: "",
-            params.sortBy ?: "",
+            params.q,
+            params.from,
+            params.sortBy,
             BuildConfig.API_NEWS_KEY
         )
             .flatMap {

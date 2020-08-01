@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.hamed.articlesviewer.screens.home.MainInteractor
 import com.hamed.articlesviewer.usecase.GetArticlesUsecase
 import com.hamed.core.model.Article
+import com.hamed.core.rx.SchedulerProviderImpl
 import com.hamed.core.util.getformatedDate
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -18,6 +19,7 @@ import java.time.LocalDateTime
 class ArticleViewModel : ViewModel(), KoinComponent {
 
     private val getArticlesUsecase: GetArticlesUsecase by inject()
+    private val scheduler : SchedulerProviderImpl by inject()
     private val interactor: MainInteractor by inject()
 
     var articles = MutableLiveData<List<Article>>()
@@ -39,8 +41,8 @@ class ArticleViewModel : ViewModel(), KoinComponent {
                 sortBy = "publishedAt"
             )
         )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(scheduler.io())
+            .observeOn(scheduler.ui())
             .subscribe(
                 { list ->
                     articles.value = list

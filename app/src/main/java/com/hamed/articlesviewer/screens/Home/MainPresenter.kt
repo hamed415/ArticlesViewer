@@ -2,6 +2,7 @@ package com.hamed.articlesviewer.screens.home
 
 import android.util.Log
 import com.hamed.articlesviewer.usecase.GetArticlesUsecase
+import com.hamed.core.rx.SchedulerProviderImpl
 import com.hamed.core.util.getformatedDate
 import com.hamed.navigation.base.BasePresenterImpl
 import com.hamed.navigation.base.BaseView
@@ -15,6 +16,7 @@ class MainPresenter : BasePresenterImpl<Main.MainView>(),
     Main.MainPresenter, KoinComponent {
 
     private val interactor: MainInteractor by inject()
+    private val scheduler : SchedulerProviderImpl by inject()
     private var selectedDate = LocalDateTime.now().minusDays(1)
 
     override fun getArticlesList() {
@@ -25,8 +27,8 @@ class MainPresenter : BasePresenterImpl<Main.MainView>(),
                 sortBy = "publishedAt"
             )
         )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(scheduler.io())
+            .observeOn(scheduler.ui())
             .subscribe(
                 { list ->
                     view?.let {
