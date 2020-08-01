@@ -13,15 +13,20 @@ import com.hamed.core.model.Article
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
-import kotlinx.android.synthetic.main.article_item.view.*
+import kotlinx.android.synthetic.main.horizontal_article_item.view.*
 
 
-class MainAdapter(val context: Context) :
+class MainAdapter(val context: Context, val direction: Direction = Direction.Horizontal) :
     Adapter<MainAdapter.ViewHolder>() {
     var news = listOf<Article>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.article_item, parent, false)
+        val view = if (direction == Direction.Horizontal) {
+            LayoutInflater.from(parent.context).inflate(R.layout.horizontal_article_item, parent, false)
+        } else {
+            LayoutInflater.from(parent.context).inflate(R.layout.vertical_article_item, parent, false)
+        }
+
         return ViewHolder(view)
     }
 
@@ -73,4 +78,8 @@ class MainAdapter(val context: Context) :
 
         }
     }
+}
+
+enum class Direction {
+    Horizontal, Vertical
 }

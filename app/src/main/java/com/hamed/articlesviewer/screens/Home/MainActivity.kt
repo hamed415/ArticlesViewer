@@ -1,13 +1,14 @@
 package com.hamed.articlesviewer.screens.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hamed.articlesviewer.R
 import com.hamed.articlesviewer.screens.adapter.MainAdapter
+import com.hamed.articlesviewer.screens.mvvm.VerticalListActivity
 import com.hamed.core.model.Article
 import com.hamed.navigation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity<Main.MainPresenter>(),
     Main.MainView {
 
-    var mainAdapter:MainAdapter? = null
+    var mainAdapter: MainAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initiateRecyclerView()
@@ -41,14 +42,10 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
     }
 
     private fun initiateButtons() {
-        btnBefore.setOnClickListener{ v ->
-            presenter?.dateDecrement()
+        btnDisplayVertical.setOnClickListener { _ ->
+            val intent = Intent(this, VerticalListActivity::class.java)
+            startActivity(intent)
         }
-
-        btnAfter.setOnClickListener{ v ->
-            presenter?.dateIncrement()
-        }
-
     }
 
     override fun updateList(articles: List<Article>) {
@@ -56,25 +53,11 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
             Log.d("first article", "${articles.first().title}")
             it.setArticles(articles)
             it.notifyDataSetChanged()
-        }?: run {
+        } ?: run {
             mainAdapter = MainAdapter(this@MainActivity)
             mainAdapter?.setArticles(articles)
             mainRecyclerView.adapter = mainAdapter
         }
-    }
-
-    override fun updateDate(date: String) {
-        tbDate.text = date
-    }
-
-    override fun displayDateIncrement(visible: Boolean) {
-        Log.d("hamed", "Date Inc visibility: $visible")
-        btnAfter.visibility = if(visible) View.VISIBLE else View.INVISIBLE
-    }
-
-    override fun displayDateDecrement(visible: Boolean) {
-        Log.d("hamed", "Date Decrement visibility: $visible")
-        btnBefore.visibility = if(visible) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onResume() {

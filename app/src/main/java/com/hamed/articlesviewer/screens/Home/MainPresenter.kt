@@ -18,8 +18,6 @@ class MainPresenter : BasePresenterImpl<Main.MainView>(),
     private var selectedDate = LocalDateTime.now().minusDays(1)
 
     override fun getArticlesList() {
-        checkMaxDate()
-        checkMinDate()
         composite.add(interactor.getArticles(
             GetArticlesUsecase.params(
                 q = "bitcoin",
@@ -33,7 +31,6 @@ class MainPresenter : BasePresenterImpl<Main.MainView>(),
                 { list ->
                     view?.let {
                         it.updateList(list)
-                        it.updateDate(getformatedDate(selectedDate))
                     }
                 },
                 {
@@ -41,27 +38,5 @@ class MainPresenter : BasePresenterImpl<Main.MainView>(),
                 }
             )
         )
-    }
-
-    override fun dateIncrement(){
-        selectedDate = selectedDate.plusDays(1)
-        getArticlesList()
-    }
-
-    override fun dateDecrement(){
-        selectedDate = selectedDate.minusDays(1)
-        getArticlesList()
-    }
-
-    private fun checkMaxDate(){
-        view?.let {
-            it.displayDateIncrement(selectedDate.plusDays(1).toLocalDate() != LocalDateTime.now().toLocalDate())
-        }
-    }
-
-    private fun checkMinDate() {
-        view?.let {
-            it.displayDateDecrement(selectedDate.minusDays(1).toLocalDate() != LocalDateTime.now().minusDays(10).toLocalDate())
-        }
     }
 }

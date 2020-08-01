@@ -8,14 +8,9 @@ interface Main {
 
     interface MainPresenter : BasePresenter<MainView> {
         fun getArticlesList()
-        fun dateIncrement()
-        fun dateDecrement()
     }
 
     interface MainView : BaseView {
         fun updateList(articles: List<Article>)
-        fun updateDate(date: String)
-        fun displayDateIncrement(visible:Boolean)
-        fun displayDateDecrement(visible:Boolean)
     }
 }
