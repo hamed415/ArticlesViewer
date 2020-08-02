@@ -2,7 +2,6 @@ package com.hamed.repository.repository
 
 import com.hamed.repository.api.NewsApi
 import com.hamed.repository.factory.NewsFactory
-import io.reactivex.annotations.CheckReturnValue
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -13,11 +12,21 @@ open class NewsRepository : KoinComponent {
         newsFactory.getNews<NewsApi>()
     }
 
-    @CheckReturnValue
+    private val flowNews by lazy {
+        newsFactory.getNewsByFlow<NewsApi>()
+    }
+
     fun getArticles(
         q: String,
         from: String,
         sortBy: String,
         apiKey: String
     ) = basicNews.getArticles(q, from, sortBy, apiKey)
+
+    suspend fun getArticlesByCoroutine(
+        q: String,
+        from: String,
+        sortBy: String,
+        apiKey: String
+    ) = flowNews.getArticlesByCoroutine(q, from, sortBy, apiKey)
 }

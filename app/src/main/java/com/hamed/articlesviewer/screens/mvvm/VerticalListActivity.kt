@@ -5,14 +5,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.hamed.articlesviewer.R
 import com.hamed.articlesviewer.screens.adapter.Direction
 import com.hamed.articlesviewer.screens.adapter.MainAdapter
 import com.hamed.navigation.base.BaseCalligraphyActivity
 import kotlinx.android.synthetic.main.activity_vertical_list.*
 import org.koin.android.ext.android.inject
+import org.koin.core.context.GlobalContext
 import java.time.LocalDateTime
 
 class VerticalListActivity : BaseCalligraphyActivity() {

@@ -38,8 +38,8 @@ dependencies {
     implementation deps.square.gsonConverter
     implementation deps.square.retrofit2
     implementation deps.square.rxConverter
-    implementation deps.square.okHttp
-    implementation deps.square.okHttpLogging
+    implementation "com.squareup.okhttp3:okhttp:4.8.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.8.0"
 
     // Basic testing tools
     testImplementation deps.testing.junit
@@ -54,7 +54,10 @@ dependencies {
 
     // test
     implementation deps.testing.okhttpIdling
-    implementation deps.facebook.stetho
-    implementation deps.facebook.stetho_okhttp
+    implementation "com.facebook.stetho:stetho:1.5.1"
+    implementation "com.facebook.stetho:stetho-okhttp3:1.5.1"
+
+    implementation deps.android.corektx
+    implementation deps.coroutinesAndroid
 
 }

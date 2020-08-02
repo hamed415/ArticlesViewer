@@ -31,6 +31,19 @@ class NewsFactory {
         return retrofit.create(T::class.java)
     }
 
+
+    inline fun <reified T> getNewsByFlow(): T {
+        val gson = GsonBuilder().setLenient().create()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(client)
+          //  .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+        return retrofit.create(T::class.java)
+    }
     val client by lazy {
         val builder = OkHttpClient.Builder()
 

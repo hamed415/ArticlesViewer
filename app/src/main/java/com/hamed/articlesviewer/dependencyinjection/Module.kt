@@ -1,5 +1,6 @@
 package com.hamed.articlesviewer.dependencyinjection
 
+import android.app.Application
 import com.hamed.articlesviewer.screens.home.MainInteractor
 import com.hamed.articlesviewer.screens.mvvm.ArticleViewModel
 import com.hamed.articlesviewer.usecase.GetArticlesUsecase

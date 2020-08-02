@@ -58,7 +58,9 @@ class MainAdapter(val context: Context, val direction: Direction = Direction.Hor
                 val transformation: Transformation =
                     RoundedCornersTransformation(10, 0)
 
-                Picasso.with(context)
+              //  Picasso.get()?.
+              //  Picasso.with(context)
+                Picasso.get()
                     .load(article.urlToImage)
                     .resize(150, 150)
                     .transform(transformation)
