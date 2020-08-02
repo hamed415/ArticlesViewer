@@ -22,12 +22,12 @@ class MainPresenterTest : BaseKoinTest() {
 
     lateinit var mainPresenter: MainPresenter
 
-    val context by lazy {
-        mockContext {
-            mockString(R.string.app_name, "after")
-            sharedPreferences(Pair("Device", "device"))
-        }
-    }
+//    val context by lazy {
+//        mockContext {
+//            mockString(R.string.app_name, "after")
+//            sharedPreferences(Pair("Device", "device"))
+//        }
+//    }
 
     @Before
     override fun setupTests() {
