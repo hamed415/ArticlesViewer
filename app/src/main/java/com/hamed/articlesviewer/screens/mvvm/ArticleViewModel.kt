@@ -1,23 +1,19 @@
 package com.hamed.articlesviewer.screens.mvvm
 
 import android.content.Context
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.hamed.articlesviewer.BuildConfig
 import com.hamed.articlesviewer.mapper.toArticles
 import com.hamed.core.model.Article
 import com.hamed.core.util.getformatedDate
 import com.hamed.repository.repository.NewsRepository
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import java.time.LocalDateTime
+import com.hamed.articlesviewer.BuildConfig
 
 class ArticleViewModel : ViewModel(), KoinComponent {
 
@@ -37,21 +33,22 @@ class ArticleViewModel : ViewModel(), KoinComponent {
     }
 
     private fun getArticles() {
-        GlobalScope.launch(Dispatchers.Default) {
-            try {
-                articles.postValue(
-                    repository.getArticlesByCoroutine(
-                        q = "bitcoin",
-                        from = getformatedDate(selectedDate!!),
-                        sortBy = "publishedAt",
-                        apiKey = BuildConfig.API_NEWS_KEY
-                    ).toArticles()
-                )
-            } catch (e: Exception) {
-                Handler(Looper.getMainLooper()).post {
-                    Toast.makeText(context, "Sorry, an error happened", Toast.LENGTH_LONG).show()
-                }
+
+        val exceptionHandler = CoroutineExceptionHandler { _, e ->
+            CoroutineScope(Dispatchers.Main).launch {
+                Toast.makeText(context, "Sorry, an error happened", Toast.LENGTH_LONG).show()
             }
+        }
+
+        GlobalScope.launch(exceptionHandler + Dispatchers.IO) {
+            articles.postValue(
+                repository.getArticlesByCoroutine(
+                    q = "bitcoin",
+                    from = getformatedDate(selectedDate!!),
+                    sortBy = "publishedAt",
+                    apiKey = BuildConfig.API_NEWS_KEY
+                ).toArticles()
+            )
         }
     }
 }
