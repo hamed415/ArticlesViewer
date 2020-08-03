@@ -12,9 +12,9 @@ import com.hamed.core.model.Article
 import com.hamed.core.util.getformatedDate
 import com.hamed.repository.repository.NewsRepository
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import java.time.LocalDateTime
@@ -22,7 +22,7 @@ import java.time.LocalDateTime
 class ArticleViewModel : ViewModel(), KoinComponent {
 
     private val repository: NewsRepository by inject()
-    private val context : Context by inject()
+    private val context: Context by inject()
 
     var articles = MutableLiveData<List<Article>>()
     var selectedDate: LocalDateTime? = null
@@ -37,7 +37,7 @@ class ArticleViewModel : ViewModel(), KoinComponent {
     }
 
     private fun getArticles() {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.Default) {
             try {
                 articles.postValue(
                     repository.getArticlesByCoroutine(
@@ -47,8 +47,7 @@ class ArticleViewModel : ViewModel(), KoinComponent {
                         apiKey = BuildConfig.API_NEWS_KEY
                     ).toArticles()
                 )
-            }
-            catch (e:Exception){
+            } catch (e: Exception) {
                 Handler(Looper.getMainLooper()).post {
                     Toast.makeText(context, "Sorry, an error happened", Toast.LENGTH_LONG).show()
                 }
