@@ -4,7 +4,6 @@ import com.hamed.articlesviewer.dependencyinjection.appModule
 import com.hamed.repository.dependencyinjection.repoModule
 import org.junit.After
 import org.junit.Before
-import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest

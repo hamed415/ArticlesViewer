@@ -13,7 +13,7 @@ import io.reactivex.Single
 import org.junit.Test
 import org.koin.test.mock.declareMock
 
-class UsecaseTest: BaseKoinTest() {
+class UsecaseTest : BaseKoinTest() {
 
     private val articles = listOf(
         Article(
