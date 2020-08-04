@@ -10,7 +10,6 @@ In this project I have used:
 this project has 4 Modules:
 - app 
 - core
-- navigation
 - repository 
 
 app module:
@@ -24,10 +23,7 @@ This mapper is responsible to convert the API models from retrofit to CORE MODEL
 In order to try MVVM and coroutine I have created a second screen to display the articles in vertical layout in recycler view
 
 core module:
->I have my models in core which will be used by the app. Abstract classes of Usecases is also in usecase folder that will be used in app. The TimeUtil file is unit tested.
-
-navigation module:
->This module just contains the abstract classes for MVP pattern
+>I have my models and abstract classes for MVP pattern which in core which will be used by the app. Abstract classes of Usecases is also in usecase folder that will be used in app. The TimeUtil file is unit tested.
 
 repository module:
 >This module uses retrofit and API models (in model package) to call and return json response from http://newsapi.org/ site.
