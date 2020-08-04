@@ -62,7 +62,7 @@ class UsecaseTest: BaseKoinTest() {
 
         GetArticlesUsecase()
             .getSingle(
-                GetArticlesUsecase.params(
+                GetArticlesUsecase.Params(
                     q = "bitcoin",
                     from = "2020-07-25",
                     sortBy = "publishedAt"
@@ -91,7 +91,7 @@ class UsecaseTest: BaseKoinTest() {
 
         GetArticlesUsecase()
             .getSingle(
-                GetArticlesUsecase.params(
+                GetArticlesUsecase.Params(
                     q = "bitcoin",
                     from = "2020-07-25",
                     sortBy = "publishedAt"

@@ -9,23 +9,23 @@ import io.reactivex.Single
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.params>(),
+class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.Params>(),
     KoinComponent {
     private val repository: NewsRepository by inject()
 
-    override fun getSingle(params: params): Single<List<Article>> {
+    override fun getSingle(Params: Params): Single<List<Article>> {
         return repository.getArticles(
-            params.q,
-            params.from,
-            params.sortBy,
+            Params.q,
+            Params.from,
+            Params.sortBy,
             BuildConfig.API_NEWS_KEY
         )
-            .flatMap {
-                Single.just(it.toArticles())
+            .map {
+                it.toArticles()
             }
     }
 
-    data class params(
+    data class Params(
         val q: String = "",
         val from: String = "",
         val sortBy: String = ""

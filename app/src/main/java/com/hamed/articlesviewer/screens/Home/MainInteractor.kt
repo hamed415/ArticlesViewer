@@ -9,7 +9,7 @@ import org.koin.core.inject
 class MainInteractor : KoinComponent {
     private val getArticlesUsecase: GetArticlesUsecase by inject()
 
-    fun getArticles(params: GetArticlesUsecase.params): Single<List<Article>> {
+    fun getArticles(params: GetArticlesUsecase.Params): Single<List<Article>> {
         return getArticlesUsecase.getSingle(params)
     }
 }

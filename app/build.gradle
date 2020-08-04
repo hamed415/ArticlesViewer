@@ -42,7 +42,6 @@ dependencies {
 
     implementation project(path: ':repository')
     implementation project(path: ':core')
-    implementation project(path: ':navigation')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     implementation deps.android.corektx

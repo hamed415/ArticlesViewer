@@ -1,4 +1,3 @@
-include ':navigation'
 include ':core'
 include ':repository'
 include ':app'

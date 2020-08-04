@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hamed.articlesviewer.mapper.toArticles
 import com.hamed.core.model.Article
-import com.hamed.core.util.getformatedDate
+import com.hamed.core.util.getFormattedDate
 import com.hamed.repository.repository.NewsRepository
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.*
@@ -44,7 +44,7 @@ class ArticleViewModel : ViewModel(), KoinComponent {
             articles.postValue(
                 repository.getArticlesByCoroutine(
                     q = "bitcoin",
-                    from = getformatedDate(selectedDate!!),
+                    from = getFormattedDate(selectedDate!!),
                     sortBy = "publishedAt",
                     apiKey = BuildConfig.API_NEWS_KEY
                 ).toArticles()

@@ -1,8 +1,8 @@
 package com.hamed.articlesviewer.screens.home
 
 import com.hamed.core.model.Article
-import com.hamed.navigation.base.BasePresenter
-import com.hamed.navigation.base.BaseView
+import com.hamed.core.base.BasePresenter
+import com.hamed.core.base.BaseView
 
 interface Main {
 

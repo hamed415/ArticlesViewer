@@ -3,14 +3,13 @@ package com.hamed.articlesviewer.screens.home
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hamed.articlesviewer.R
 import com.hamed.articlesviewer.screens.adapter.MainAdapter
 import com.hamed.articlesviewer.screens.mvvm.VerticalListActivity
 import com.hamed.core.model.Article
-import com.hamed.navigation.base.BaseActivity
+import com.hamed.core.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<Main.MainPresenter>(),

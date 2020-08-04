@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hamed.articlesviewer.R
 import com.hamed.articlesviewer.screens.adapter.Direction
 import com.hamed.articlesviewer.screens.adapter.MainAdapter
-import com.hamed.navigation.base.BaseCalligraphyActivity
+import com.hamed.core.base.BaseCalligraphyActivity
 import kotlinx.android.synthetic.main.activity_vertical_list.*
 import org.koin.android.ext.android.inject
-import org.koin.core.context.GlobalContext
 import java.time.LocalDateTime
 
 class VerticalListActivity : BaseCalligraphyActivity() {

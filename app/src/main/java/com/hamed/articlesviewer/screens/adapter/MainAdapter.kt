@@ -22,9 +22,11 @@ class MainAdapter(val context: Context, val direction: Direction = Direction.Hor
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = if (direction == Direction.Horizontal) {
-            LayoutInflater.from(parent.context).inflate(R.layout.horizontal_article_item, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.horizontal_article_item, parent, false)
         } else {
-            LayoutInflater.from(parent.context).inflate(R.layout.vertical_article_item, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.vertical_article_item, parent, false)
         }
 
         return ViewHolder(view)
@@ -58,8 +60,6 @@ class MainAdapter(val context: Context, val direction: Direction = Direction.Hor
                 val transformation: Transformation =
                     RoundedCornersTransformation(10, 0)
 
-              //  Picasso.get()?.
-              //  Picasso.with(context)
                 Picasso.get()
                     .load(article.urlToImage)
                     .resize(150, 150)

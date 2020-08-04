@@ -30,6 +30,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     implementation deps.android.corektx
     implementation deps.android.appcompat
+    implementation deps.calligraphy
 
     // Basic testing tools
     testImplementation deps.testing.junit
