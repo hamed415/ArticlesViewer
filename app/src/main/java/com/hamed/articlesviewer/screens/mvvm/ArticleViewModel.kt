@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.hamed.articlesviewer.BuildConfig
 import com.hamed.articlesviewer.mapper.toArticles
 import com.hamed.core.model.Article
 import com.hamed.core.util.getFormattedDate
@@ -13,7 +14,6 @@ import kotlinx.coroutines.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import java.time.LocalDateTime
-import com.hamed.articlesviewer.BuildConfig
 
 class ArticleViewModel : ViewModel(), KoinComponent {
 
@@ -41,14 +41,16 @@ class ArticleViewModel : ViewModel(), KoinComponent {
         }
 
         GlobalScope.launch(exceptionHandler + Dispatchers.IO) {
-            articles.postValue(
-                repository.getArticlesByCoroutine(
-                    q = "bitcoin",
-                    from = getFormattedDate(selectedDate!!),
-                    sortBy = "publishedAt",
-                    apiKey = BuildConfig.API_NEWS_KEY
-                ).toArticles()
-            )
+            selectedDate?.let { date ->
+                articles.postValue(
+                    repository.getArticlesByCoroutine(
+                        q = "bitcoin",
+                        from = getFormattedDate(date),
+                        sortBy = "publishedAt",
+                        apiKey = BuildConfig.API_NEWS_KEY
+                    ).toArticles()
+                )
+            }
         }
     }
 }
