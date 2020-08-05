@@ -34,7 +34,7 @@ class ArticleViewModel : ViewModel(), KoinComponent {
 
     private fun getArticles() {
 
-        val exceptionHandler = CoroutineExceptionHandler { _, e ->
+        val exceptionHandler = CoroutineExceptionHandler { _, _ ->
             CoroutineScope(Dispatchers.Main).launch {
                 Toast.makeText(context, "Sorry, an error happened", Toast.LENGTH_LONG).show()
             }

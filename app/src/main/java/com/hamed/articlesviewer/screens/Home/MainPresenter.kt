@@ -28,9 +28,7 @@ class MainPresenter : BasePresenterImpl<Main.MainView>(),
             .observeOn(scheduler.ui())
             .subscribe(
                 { list ->
-                    view?.let {
-                        it.updateList(list)
-                    }
+                    view?.updateList(list)
                 },
                 {
                     Log.d("hamed", " error $it")

@@ -47,16 +47,14 @@ class MainActivity : BaseActivity<Main.MainPresenter>(),
         }
     }
 
-    override fun updateList(articles: List<Article>) {
-        mainAdapter?.let {
-            Log.d("first article", "${articles.first().title}")
-            it.setArticles(articles)
-            it.notifyDataSetChanged()
-        } ?: run {
-            mainAdapter = MainAdapter(this@MainActivity)
-            mainAdapter?.setArticles(articles)
-            mainRecyclerView.adapter = mainAdapter
-        }
+    override fun updateList(articles: List<Article>) = mainAdapter?.let {
+        Log.d("first article", articles.first().title)
+        it.setArticles(articles)
+        it.notifyDataSetChanged()
+    } ?: run {
+        mainAdapter = MainAdapter(this@MainActivity)
+        mainAdapter?.setArticles(articles)
+        mainRecyclerView.adapter = mainAdapter
     }
 
     override fun onResume() {

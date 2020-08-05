@@ -13,11 +13,11 @@ class GetArticlesUsecase : SingleUseCaseImpl<List<Article>, GetArticlesUsecase.P
     KoinComponent {
     private val repository: NewsRepository by inject()
 
-    override fun getSingle(Params: Params): Single<List<Article>> {
+    override fun getSingle(params: Params): Single<List<Article>> {
         return repository.getArticles(
-            Params.q,
-            Params.from,
-            Params.sortBy,
+            params.q,
+            params.from,
+            params.sortBy,
             BuildConfig.API_NEWS_KEY
         )
             .map {

@@ -10,21 +10,19 @@ import io.reactivex.disposables.CompositeDisposable
  *
  *
  */
+@Suppress("UNCHECKED_CAST")
 abstract class BasePresenterImpl<T : BaseView?> : BasePresenter<T> {
 
     /**
      * The BaseView model attached to this presenter
      */
-    @JvmField
     protected var view: T? = null
 
     /**
      * CompositeDisposable for presenter
      */
-    @JvmField
     protected var composite = CompositeDisposable()
 
-    @JvmField
     protected var backgroundComposite = CompositeDisposable()
 
     override fun onAttach(view: BaseView?) {
